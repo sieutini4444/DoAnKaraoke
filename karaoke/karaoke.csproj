@@ -58,29 +58,35 @@
     <Compile Include="DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="HoSoAdmin.cs">
+    <Compile Include="DangXuat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HoSoAdmin.Designer.cs">
-      <DependentUpon>HoSoAdmin.cs</DependentUpon>
+    <Compile Include="DangXuat.Designer.cs">
+      <DependentUpon>DangXuat.cs</DependentUpon>
     </Compile>
-    <Compile Include="QuanLyPhong.cs">
+    <Compile Include="QuanLyKhoHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QuanLyPhong.Designer.cs">
-      <DependentUpon>QuanLyPhong.cs</DependentUpon>
+    <Compile Include="QuanLyKhoHang.Designer.cs">
+      <DependentUpon>QuanLyKhoHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="quanLyDatPhong.cs">
+    <Compile Include="XacNhanAdmin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="quanLyDatPhong.Designer.cs">
-      <DependentUpon>quanLyDatPhong.cs</DependentUpon>
+    <Compile Include="XacNhanAdmin.Designer.cs">
+      <DependentUpon>XacNhanAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageUser.cs">
+    <Compile Include="QuanLyNV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageUser.Designer.cs">
-      <DependentUpon>ManageUser.cs</DependentUpon>
+    <Compile Include="QuanLyNV.Designer.cs">
+      <DependentUpon>QuanLyNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TrangThaiPhong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TrangThaiPhong.Designer.cs">
+      <DependentUpon>TrangThaiPhong.cs</DependentUpon>
     </Compile>
     <Compile Include="QuanLyThueTraPhong.cs">
       <SubType>Form</SubType>
@@ -88,17 +94,11 @@
     <Compile Include="QuanLyThueTraPhong.Designer.cs">
       <DependentUpon>QuanLyThueTraPhong.cs</DependentUpon>
     </Compile>
-    <Compile Include="HoSoNV.cs">
+    <Compile Include="TrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HoSoNV.Designer.cs">
-      <DependentUpon>HoSoNV.cs</DependentUpon>
-    </Compile>
-    <Compile Include="trangChu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="trangChu.Designer.cs">
-      <DependentUpon>trangChu.cs</DependentUpon>
+    <Compile Include="TrangChu.Designer.cs">
+      <DependentUpon>TrangChu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,26 +108,23 @@
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HoSoAdmin.resx">
-      <DependentUpon>HoSoAdmin.cs</DependentUpon>
+    <EmbeddedResource Include="DangXuat.resx">
+      <DependentUpon>DangXuat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageUser.resx">
-      <DependentUpon>ManageUser.cs</DependentUpon>
+    <EmbeddedResource Include="QuanLyKhoHang.resx">
+      <DependentUpon>QuanLyKhoHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="quanLyDatPhong.resx">
-      <DependentUpon>quanLyDatPhong.cs</DependentUpon>
+    <EmbeddedResource Include="QuanLyNV.resx">
+      <DependentUpon>QuanLyNV.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="QuanLyPhong.resx">
-      <DependentUpon>QuanLyPhong.cs</DependentUpon>
+    <EmbeddedResource Include="TrangThaiPhong.resx">
+      <DependentUpon>TrangThaiPhong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyThueTraPhong.resx">
       <DependentUpon>QuanLyThueTraPhong.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="HoSoNV.resx">
-      <DependentUpon>HoSoNV.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="trangChu.resx">
-      <DependentUpon>trangChu.cs</DependentUpon>
+    <EmbeddedResource Include="TrangChu.resx">
+      <DependentUpon>TrangChu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -138,6 +135,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="XacNhanAdmin.resx">
+      <DependentUpon>XacNhanAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -10,10 +10,10 @@ using System.Windows.Forms;
 
 namespace karaoke
 {
-    public partial class trangChu : Form
+    public partial class TrangChu : Form
     {
         
-        public trangChu()
+        public TrangChu()
         {
             InitializeComponent();
         }
@@ -24,46 +24,48 @@ namespace karaoke
 
         }
 
-        private void manageUser(object sender, EventArgs e)
-        {
-            ManageUser f = new ManageUser();
-            f.Text = "Quản lý người dùng";
-            f.Show();
-        }
-
-        private void quanLyQuan_Click(object sender, EventArgs e)
-        {
-            quanLyDatPhong f = new quanLyDatPhong();
-            f.Text = "Quản lý đặt phòng";
-            f.Show();
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
+            this.Hide();
             QuanLyThueTraPhong f = new QuanLyThueTraPhong();
             f.Text = "Quản lý quán thuê trả phòng";
-            f.Show();
+            f.ShowDialog();
         }
 
         private void dangNhap_Click(object sender, EventArgs e)
         {
-            DangNhap f = new DangNhap();
+            this.Hide();
+            DangXuat f = new DangXuat();
             f.Text = "Đăng nhập";
             f.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            HoSoNV f = new HoSoNV();
+            this.Hide();
+            QuanLyNV f = new QuanLyNV();
             f.Text = "Thông tin cá nhân";
-            f.Show();
+            f.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            QuanLyPhong f = new QuanLyPhong();
+            TrangThaiPhong f = new TrangThaiPhong();
             f.Text = "Quản lý phòng";
-            f.Show();
+            f.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            QuanLyKhoHang f = new QuanLyKhoHang();
+            f.Text = "Trang chủ";
+            f.ShowDialog();
         }
     }
 }

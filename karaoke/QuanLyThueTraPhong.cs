@@ -46,5 +46,18 @@ namespace karaoke
         {
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            TrangChu f = new TrangChu();
+            f.Text = "Trang chủ";
+            f.ShowDialog();
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

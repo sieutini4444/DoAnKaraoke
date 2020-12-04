@@ -1,21 +1,28 @@
-create database QuanLyKARAOKE
+﻿create database QuanLyKARAOKE
 use QuanLyKARAOKE
 go
 
 create table NHANVIEN(
-	tenDN varchar not NULL,
-	matKhau varchar not NULL,
-	hoTen nvarchar not NULL,
+	tenDN varchar(256) not NULL,
+	matKhau varchar(256) not NULL,
+	hoTen nvarchar(256) not NULL,
 	gioiTinh bit not NULL,
 	ngaySinh date,
-	sdt varchar not NULL,
-	cmnd int not NULL,
-	chucVu nvarchar,
+	sdt varchar(32) not NULL,
+	cmnd varchar(256) not NULL,
+	chucVu nvarchar(256),
 	primary key (tenDN)
 )
+drop table NHANVIEN
+insert into NHANVIEN values ('asd', 'asd', 'Nguyen Van A', 1, '12/12/2001', '123456789', '987654321',N'Nhân Viên')
+insert into NHANVIEN values ('asdf', 'asdf', 'Nguyen Van B', 1, '12/11/2001', '123456889', '997654321',N'Quản Lý')
+insert into NHANVIEN values ('asdfg', 'asdfg', 'Nguyen Van C', 1, '12/10/2001', '123556789', '87634321',N'Nhân Viên')
+insert into NHANVIEN values ('asdfgh', 'asdfgh', 'Nguyen Van D', 0, '12/10/2001', '12556789', '8763321',N'Nhân Viên')
+select * from NHANVIEN
 
 create table PHONG(
 	tinhTrang nvarchar,
+	maTinhTrang int,
 	loaiPhong nvarchar not NULL,
 	giaPhong int not NULL,
 	maPhong varchar not NULL,
@@ -39,7 +46,6 @@ create table PHIEUDAT(
 	sdtNguoiDat varchar not NULL,
 	cmnd int,
 	tienCoc int,
-	hinhThuc varchar,
 	maPD varchar not NULL,
 	primary key (maPD),
 	foreign key (maPhong) references PHONG(maPhong) 

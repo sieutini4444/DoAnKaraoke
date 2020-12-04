@@ -89,6 +89,7 @@ namespace karaoke
             }
 
             db.Execute($"update PHONG set tinhTrang=N'{roomState}', maTinhTrang={stateID}, giaPhong={price}, loaiPhong=N'{roomType}' where maPHong='{roomID}'");
+            alertLabel.Visible = false;
             loadRoomList();
         }
     }

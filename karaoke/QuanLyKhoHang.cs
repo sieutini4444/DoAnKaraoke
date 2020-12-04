@@ -15,29 +15,75 @@ namespace karaoke
         public QuanLyKhoHang()
         {
             InitializeComponent();
+            serviceList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
+        QuanLyKaraokeDB db = new QuanLyKaraokeDB();
 
         private void QuanLyKho_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'quanLyKARAOKEDataSet.DICHVU' table. You can move, or remove it, as needed.
+            this.dICHVUTableAdapter.Fill(this.quanLyKARAOKEDataSet.DICHVU);
+            loadServiceList();
 
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void loadServiceList()
         {
-
+            serviceList.DataSource = db.GetData("select * from DICHVU");
         }
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void backBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
             TrangChu f = new TrangChu();
             f.Text = "Trang chủ";
             f.ShowDialog();
+        }
+
+        private void importBtn_Click(object sender, EventArgs e)
+        {
+            if (serviceList.SelectedRows.Count == 0)
+            {
+                alertLable.Visible = true;
+                return;
+            }
+
+            DataGridViewRow selectedRow = serviceList.SelectedRows[0];
+            string serviceName = selectedRow.Cells["tenDV"].Value.ToString();
+            string serviceID = selectedRow.Cells["maDV"].Value.ToString();
+            string unit = selectedRow.Cells["donViTinh"].Value.ToString();
+
+            using (actionForm importFrom = new actionForm(serviceName, serviceID, unit, "Nhập kho", 1))
+            {
+                importFrom.ShowDialog();
+                loadServiceList();
+            }
+
+            alertLable.Visible = false;
+        }
+
+        private void exportBtn_Click(object sender, EventArgs e)
+        {
+            if (serviceList.SelectedRows.Count == 0)
+            {
+                alertLable.Visible = true;
+                return;
+            }
+
+            DataGridViewRow selectedRow = serviceList.SelectedRows[0];
+            string serviceName = selectedRow.Cells["tenDV"].Value.ToString();
+            string serviceID = selectedRow.Cells["maDV"].Value.ToString();
+            string unit = selectedRow.Cells["donViTinh"].Value.ToString();
+
+            using (actionForm importFrom = new actionForm(serviceName, serviceID, unit, "Xuất kho", 2))
+            {
+                importFrom.ShowDialog();
+                loadServiceList();
+            }
+
+            alertLable.Visible = false;
         }
     }
 }

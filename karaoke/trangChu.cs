@@ -67,5 +67,10 @@ namespace karaoke
             f.Text = "Trang chủ";
             f.ShowDialog();
         }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

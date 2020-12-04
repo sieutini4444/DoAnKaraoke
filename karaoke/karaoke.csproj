@@ -61,6 +61,12 @@
     <Compile Include="Change_Password.Designer.cs">
       <DependentUpon>Change_Password.cs</DependentUpon>
     </Compile>
+    <Compile Include="actionKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="actionKho.Designer.cs">
+      <DependentUpon>actionKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyKaraoke.cs" />
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
@@ -125,6 +131,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DangXuat.resx">
       <DependentUpon>DangXuat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="actionKho.resx">
+      <DependentUpon>actionKho.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyKhoHang.resx">
       <DependentUpon>QuanLyKhoHang.cs</DependentUpon>

@@ -13,7 +13,7 @@ create table NHANVIEN(
 	chucVu nvarchar(256),
 	primary key (tenDN)
 )
-drop table NHANVIEN
+
 insert into NHANVIEN values ('asd', 'asd', 'Nguyen Van A', 1, '12/12/2001', '123456789', '987654321',N'Nhân Viên')
 insert into NHANVIEN values ('asdf', 'asdf', 'Nguyen Van B', 1, '12/11/2001', '123456889', '997654321',N'Quản Lý')
 insert into NHANVIEN values ('asdfg', 'asdfg', 'Nguyen Van C', 1, '12/10/2001', '123556789', '87634321',N'Nhân Viên')

@@ -26,10 +26,10 @@ namespace karaoke
 
         private void backBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            TrangChu f = new TrangChu(isManager, username);
-            f.Text = "Trang chủ";
-            f.ShowDialog();
+            //TrangChu f = new TrangChu(isManager, username);
+            //f.Text = "Trang chủ";
+            //f.ShowDialog();
+            this.Close();
         }
 
         private void TrangThaiPhong_Load(object sender, EventArgs e)

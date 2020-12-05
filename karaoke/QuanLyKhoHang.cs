@@ -12,10 +12,14 @@ namespace karaoke
 {
     public partial class QuanLyKhoHang : Form
     {
-        public QuanLyKhoHang()
+        private bool isManager = false;
+        private string username = "";
+        public QuanLyKhoHang(bool isManager, string username)
         {
             InitializeComponent();
             serviceList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            this.isManager = isManager;
+            this.username = username;
         }
 
         QuanLyKaraokeDB db = new QuanLyKaraokeDB();
@@ -37,7 +41,7 @@ namespace karaoke
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TrangChu f = new TrangChu();
+            TrangChu f = new TrangChu(isManager ,username);
             f.Text = "Trang chủ";
             f.ShowDialog();
         }

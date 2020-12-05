@@ -15,54 +15,13 @@ namespace karaoke
         public DangNhap()
         {
             InitializeComponent();
-        }
-
-        private void DangNhap_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void idUser_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void logIn_Click(object sender, EventArgs e)
-        {
-            if (idUser.Text == "admin" && passWord.Text == "admin")
-            {
-                this.Hide();
-                QuanLyNV f = new QuanLyNV();
-                f.Text = "Quản lý nhân viên";
-                f.ShowDialog();
-            }
-            else if (idUser.Text == "staff" && passWord.Text == "123456")
-            {
-                this.Hide();
-                TrangChu f = new TrangChu();
-                f.Text = "Trang chủ";
-                f.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Wrong password or user");
-            }
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void passWord_TextChanged(object sender, EventArgs e)
-        {
-            
+            passTxt.PasswordChar = '*';
         }
 
         private void passWord_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                logIn.PerformClick();
+                loginBtn.PerformClick();
         }
 
         private void Cancel_Click(object sender, EventArgs e)
@@ -70,9 +29,25 @@ namespace karaoke
             MessageBox.Show("Vui lòng liên hệ admin");
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void loginBtn_Click(object sender, EventArgs e)
         {
-
+            QuanLyKaraokeDB db = new QuanLyKaraokeDB();
+            var row = db.GetData($"select * from NHANVIEN where tenDN='{usernameTxt.Text.ToString()}' and matKhau='{passTxt.Text.ToString()}'").Rows;
+            if (row.Count == 1)
+            {
+                string username = row[0].ItemArray[0].ToString();
+                bool isManager = Convert.ToInt32(row[0].ItemArray[8].ToString()) == 1;
+                Console.WriteLine(row[0].ItemArray[7]);
+                Console.WriteLine(isManager);
+                this.Hide();
+                TrangChu f = new TrangChu(isManager, username);
+                f.Text = "Trang Chủ";
+                f.ShowDialog();
+            }
+            else
+            {
+                alertLabel.Visible = true;
+            }
         }
     }
 }

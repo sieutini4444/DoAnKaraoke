@@ -12,10 +12,17 @@ namespace karaoke
 {
     public partial class TrangChu : Form
     {
-        
-        public TrangChu()
+        private bool isManager = false;
+        private string username = "";
+        public TrangChu(bool isManager, string username)
         {
             InitializeComponent();
+            this.isManager = isManager;
+            this.username = username;
+            if (this.isManager)
+            {
+                staffManagementBtn.Visible = true;
+            }
         }
 
 
@@ -27,30 +34,29 @@ namespace karaoke
         private void button2_Click(object sender, EventArgs e)
         {
             this.Hide();
-            QuanLyThueTraPhong f = new QuanLyThueTraPhong();
+            QuanLyThueTraPhong f = new QuanLyThueTraPhong(isManager, username);
             f.Text = "Quản lý quán thuê trả phòng";
             f.ShowDialog();
         }
 
         private void dangNhap_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            DangXuat f = new DangXuat();
+            DangNhap f = new DangNhap();
             f.Text = "Đăng nhập";
             f.Show();
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            QuanLyNV f = new QuanLyNV();
+            ThongTinCaNhan f = new ThongTinCaNhan(username);
             f.Text = "Thông tin cá nhân";
             f.ShowDialog();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            TrangThaiPhong f = new TrangThaiPhong();
+            TrangThaiPhong f = new TrangThaiPhong(isManager);
             f.Text = "Quản lý phòng";
             f.ShowDialog();
         }
@@ -63,14 +69,17 @@ namespace karaoke
         private void button5_Click(object sender, EventArgs e)
         {
             this.Hide();
-            QuanLyKhoHang f = new QuanLyKhoHang();
+            QuanLyKhoHang f = new QuanLyKhoHang(isManager, username);
             f.Text = "Trang chủ";
             f.ShowDialog();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void button6_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            QuanLyNV f = new QuanLyNV(isManager, username);
+            f.Text = "Quản lý nhân viên";
+            f.ShowDialog();
         }
     }
 }

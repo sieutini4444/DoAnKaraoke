@@ -67,6 +67,18 @@
     <Compile Include="actionKho.Designer.cs">
       <DependentUpon>actionKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="DoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoiMatKhau.Designer.cs">
+      <DependentUpon>DoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongTinCaNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongTinCaNhan.Designer.cs">
+      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyKaraoke.cs" />
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
@@ -134,6 +146,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="actionKho.resx">
       <DependentUpon>actionKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoiMatKhau.resx">
+      <DependentUpon>DoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongTinCaNhan.resx">
+      <DependentUpon>ThongTinCaNhan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyKhoHang.resx">
       <DependentUpon>QuanLyKhoHang.cs</DependentUpon>

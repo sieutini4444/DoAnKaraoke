@@ -13,12 +13,17 @@ namespace karaoke
     public partial class QuanLyThueTraPhong : Form
     {
         QuanLyKaraokeDB db = new QuanLyKaraokeDB();
+        private bool isManager = false;
+        private string username = "";
 
-        public QuanLyThueTraPhong()
+        public QuanLyThueTraPhong(bool isManager, string username)
         {
             InitializeComponent();
+            this.isManager = isManager;
+            this.username = username;
             loadList(roomList, "PHONG");
             loadList(serviceList, "DICHVU");
+
 
             roomList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             serviceList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -39,7 +44,7 @@ namespace karaoke
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TrangChu f = new TrangChu();
+            TrangChu f = new TrangChu(isManager, username);
             f.Text = "Trang chủ";
             f.ShowDialog();
         }
@@ -80,9 +85,9 @@ namespace karaoke
                     nameTxt.Text = ticket[0].ItemArray[2].ToString();
                     phoneTxt.Text = ticket[0].ItemArray[3].ToString();
                     IDTxt.Text = ticket[0].ItemArray[4].ToString();
-                    invoiceDetailList.DataSource = db.GetData($"select * from CHITIETHOADON where maPD='{ticket[0].ItemArray[5]}'");
-                    var dataRows = db.GetData($"select SUM(thanhGia) from CHITIETHOADON where maPD='{ticket[0].ItemArray[5]}'").Rows;
-                    if (dataRows[0].ItemArray[0].Equals(""))
+                    invoiceDetailList.DataSource = db.GetData($"select * from CHITIETHOADON where maPD={ticket[0].ItemArray[5]}");
+                    var dataRows = db.GetData($"select SUM(thanhGia) from CHITIETHOADON where maPD={ticket[0].ItemArray[5]}").Rows;
+                    if (dataRows[0].ItemArray[0] != DBNull.Value)
                     {
                         int servicePrice = Convert.ToInt32(dataRows[0].ItemArray[0]);
                         servicePriceLabel.Text = servicePrice.ToString();
@@ -130,7 +135,7 @@ namespace karaoke
             if (ticket.Count != 0)
                 maxID = Convert.ToInt32(ticket[0].ItemArray[5]) + 1;
 
-            db.Execute($"insert into PHIEUDAT values ('{roomID}', '{datetime}', N'{customerName}', '{phoneNumber}', {personalID}, '{maxID}')");
+            db.Execute($"insert into PHIEUDAT values ('{roomID}', '{datetime}', N'{customerName}', '{phoneNumber}', {personalID}, {maxID})");
             db.Execute($"update PHONG set maTinhTrang=1, tinhTrang=N'Đang Dùng' where maPhong='{roomID}'");
 
             loadList(roomList, "PHONG");
@@ -152,12 +157,21 @@ namespace karaoke
                     return;
                 }
 
+
+            var HDRows = db.GetData($"select * from HOADON ORDER BY maHD DESC").Rows;
+            int maxID = 0;
+            if (HDRows.Count != 0)
+                maxID = Convert.ToInt32(HDRows[0].ItemArray[0]) + 1;
+
+            var ticketID = db.GetData($"select * from PHIEUDAT where maPhong='{roomID}' ORDER BY maPD DESC").Rows[0].ItemArray[5];
+            db.Execute($"insert into HOADON values ({maxID}, '{roomID}', {ticketID}, {priceLabel.Text})");
+
             nameTxt.Text = "";
             phoneTxt.Text = "";
             IDTxt.Text = "";
             servicePriceLabel.Text = "0";
             priceLabel.Text = "0";
-
+                
             db.Execute($"update PHONG set maTinhTrang=0, tinhTrang=N'Trống' where maPhong='{roomID}'");
             invoiceDetailList.DataSource = null;
             loadList(roomList, "PHONG");
@@ -207,7 +221,7 @@ namespace karaoke
                 maxID = Convert.ToInt32(invoiceDetail[0].ItemArray[0]) + 1;
 
             db.Execute($"update DICHVU set soLuongDV={remainQuantity} where maDV='{serviceID}'");
-            db.Execute($"insert into CHITIETHOADON values ('{maxID}', '{serviceID}', N'{serviceName}', {quantity}, {servicePrice}, {servicePrice * quantity}, '0', '{ticketID}')");
+            db.Execute($"insert into CHITIETHOADON values ({maxID}, '{serviceID}', N'{serviceName}', {quantity}, {servicePrice}, {servicePrice * quantity}, '0', {ticketID})");
             alertServiceLabel.Visible = false;
             alertLabel.Visible = false;
             loadList(serviceList, "DICHVU");

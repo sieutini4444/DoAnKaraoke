@@ -12,11 +12,16 @@ namespace karaoke
 {
     public partial class QuanLyNV : Form
     {
-        public QuanLyNV()
+        private bool isManager = false;
+        private string username = "";
+        public QuanLyNV(bool isManager, string username)
         {
             InitializeComponent();
             employeList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             passTxt.PasswordChar = '*';
+            this.isManager = isManager;
+            this.username = username;
+            roleBox.SelectedIndex = 0;
             loadData();
         }
 
@@ -30,7 +35,7 @@ namespace karaoke
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TrangChu f = new TrangChu();
+            TrangChu f = new TrangChu(isManager, username);
             f.Text = "Trang chủ";
             f.ShowDialog();
         }
@@ -77,8 +82,9 @@ namespace karaoke
             var sex =  !maleRad.Checked && femaleRad.Checked ? 1 : 0;
             var DOB = birthDate.Value.ToString();
             var role = roleBox.Text;
+            var roleID = roleBox.SelectedIndex;
 
-            var query = $"insert into NHANVIEN values ('{userName}', '{password}', N'{name}', {sex}, '{DOB}', '{phoneNum}', '{ID}', N'{role}')";
+            var query = $"insert into NHANVIEN values ('{userName}', '{password}', N'{name}', {sex}, '{DOB}', '{phoneNum}', '{ID}', N'{role}', {roleID})";
             db.Execute(query);
             alertLable.Visible = false;
             loadData();
@@ -102,10 +108,11 @@ namespace karaoke
             var sex =  !maleRad.Checked && femaleRad.Checked ? 1 : 0;
             var DOB = birthDate.Value.ToString();
             var role = roleBox.Text;
+            var roleID = roleBox.SelectedIndex;
 
             var query = $"update NHANVIEN set " +
                         (password != "" ? $"matKhau='{password}'," : "") +
-                        $"hoTen=N'{name}', gioiTinh={sex}, ngaySinh='{DOB}', sdt='{phoneNum}', cmnd='{ID}', chucVu=N'{role}' where NHANVIEN.tenDN='{userName}'";
+                        $"hoTen=N'{name}', gioiTinh={sex}, ngaySinh='{DOB}', sdt='{phoneNum}', cmnd='{ID}', chucVu=N'{role}', maChucVu={roleID} where NHANVIEN.tenDN='{userName}'";
 
             db.Execute(query);
             loadData();

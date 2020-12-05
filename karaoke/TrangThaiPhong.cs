@@ -12,9 +12,13 @@ namespace karaoke
 {
     public partial class TrangThaiPhong : Form
     {
-        public TrangThaiPhong()
+        private bool isManager = false;
+        private string username = "";
+        public TrangThaiPhong(bool isManager)
         {
             InitializeComponent();
+            this.isManager = isManager;
+            this.username = username;
         }
 
         QuanLyKaraokeDB db = new QuanLyKaraokeDB();
@@ -23,7 +27,7 @@ namespace karaoke
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            TrangChu f = new TrangChu();
+            TrangChu f = new TrangChu(isManager, username);
             f.Text = "Trang chủ";
             f.ShowDialog();
         }

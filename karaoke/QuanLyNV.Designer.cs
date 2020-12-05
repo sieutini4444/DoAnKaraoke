@@ -51,7 +51,6 @@
             this.birthDate = new System.Windows.Forms.DateTimePicker();
             this.nameTxt = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.saveBtn = new System.Windows.Forms.Button();
             this.updateBtn = new System.Windows.Forms.Button();
             this.removeBtn = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -202,8 +201,8 @@
             // 
             this.roleBox.FormattingEnabled = true;
             this.roleBox.Items.AddRange(new object[] {
-            "Quản lý",
-            "Nhân viên"});
+            "Nhân Viên",
+            "Quản Lý"});
             this.roleBox.Location = new System.Drawing.Point(127, 265);
             this.roleBox.Name = "roleBox";
             this.roleBox.Size = new System.Drawing.Size(235, 27);
@@ -262,7 +261,6 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.saveBtn);
             this.groupBox5.Controls.Add(this.updateBtn);
             this.groupBox5.Controls.Add(this.addBtn);
             this.groupBox5.Controls.Add(this.backBtn);
@@ -274,15 +272,6 @@
             this.groupBox5.TabIndex = 19;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Chức Năng";
-            // 
-            // saveBtn
-            // 
-            this.saveBtn.Location = new System.Drawing.Point(25, 186);
-            this.saveBtn.Name = "saveBtn";
-            this.saveBtn.Size = new System.Drawing.Size(114, 29);
-            this.saveBtn.TabIndex = 4;
-            this.saveBtn.Text = "Lưu";
-            this.saveBtn.UseVisualStyleBackColor = true;
             // 
             // updateBtn
             // 
@@ -501,7 +490,6 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.Button updateBtn;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;

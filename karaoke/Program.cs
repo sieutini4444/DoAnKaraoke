@@ -17,7 +17,7 @@ namespace karaoke
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             // Application.Run(new DangNhap());
-            Application.Run(new QuanLyKhoHang());
+            Application.Run(new QuanLyThueTraPhong());
         }
     }
 }
